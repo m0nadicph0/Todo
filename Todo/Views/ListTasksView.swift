@@ -14,6 +14,7 @@ struct ListTasksView: View {
                 if shouldShowTask(task: task) {
                     HStack{
                         Toggle("\(task.title)", isOn: $task.isCompleted)
+                            .strikethrough(task.isCompleted)
                         Spacer()
                         
                         Button {
