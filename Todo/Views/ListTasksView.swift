@@ -17,6 +17,13 @@ struct ListTasksView: View {
                             .strikethrough(task.isCompleted)
                         Spacer()
                         
+                        Text("\(relative(task.dueDate))")
+                            .padding(.horizontal, 5.0)
+                            .font(.callout)
+                            .background(Color(red: 0.929, green: 0.959, blue: 1.0))
+                            .foregroundColor(.gray)
+                            .cornerRadius(5)
+                        
                         Button {
                             viewModel.removeTask(task: task)
                         } label: {
@@ -28,6 +35,12 @@ struct ListTasksView: View {
             }
             
         }
+    }
+    
+    func relative(_ date: Date) -> String {
+        let df = RelativeDateTimeFormatter()
+        df.dateTimeStyle = .named
+        return df.string(for: date)!
     }
     
     func shouldShowTask(task:Task) -> Bool {

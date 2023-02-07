@@ -25,6 +25,11 @@ struct AddTaskView: View {
                 }.padding(.top, 10)
                 
                 HStack{
+                    Text("Due")
+                    DatePicker("", selection: $task.dueDate, displayedComponents: .date).padding()
+                }.padding(.top, 10)
+                
+                HStack{
                     Spacer()
                     Button("Cancel"){
                         presentationMode.wrappedValue.dismiss()
