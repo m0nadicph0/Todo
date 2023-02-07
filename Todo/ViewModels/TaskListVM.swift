@@ -18,6 +18,10 @@ class TaskListVM: ObservableObject {
         self.tasks.append(task)
     }
     
+    func addTasks(tasks:[Task]) {
+        self.tasks.append(contentsOf: tasks)
+    }
+    
     func removeTask(task:Task) {
         let index = self.tasks.firstIndex{ $0.id == task.id}
         self.tasks.remove(at: index!)
